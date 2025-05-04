@@ -1,0 +1,4 @@
+server.port=8080
+clickhouse.host=localhost
+clickhouse.port=8443
+clickhouse.database=default

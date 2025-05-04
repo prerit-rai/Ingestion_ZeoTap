@@ -1,0 +1,22 @@
+version: '3'
+services:
+  clickhouse:
+    image: clickhouse/clickhouse-server
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    environment:
+      - CLICKHOUSE_USER=default
+      - CLICKHOUSE_PASSWORD=default
+  backend:
+    build: ./backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - clickhouse
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
